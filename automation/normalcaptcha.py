@@ -1,8 +1,8 @@
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from twocaptcha import TwoCaptcha
+from captcha.twocaptcha import twoCaptcha
 from selenium import webdriver
 from time import sleep
 import urllib.request
@@ -29,6 +29,7 @@ class ImgCaptcha:
 
         # Navegador
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.twocaptcha = twoCaptcha()
 
     def abrir_navegador(self):
         # Entrar no site
@@ -40,10 +41,7 @@ class ImgCaptcha:
         self.driver.close()
 
     def resolver_captcha(self):
-        # Encontrar a palavra da imagem
-        solver = TwoCaptcha(self.api_captcha)
-        result = solver.normal(self.img_path)["code"]
-        os.remove(self.img_path)
+        result = self.twocaptcha.solve_normal()
         return result
 
     def realizar_teste(self):

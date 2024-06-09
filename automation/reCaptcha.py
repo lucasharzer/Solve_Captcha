@@ -1,8 +1,8 @@
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from twocaptcha import TwoCaptcha
+from captcha.twocaptcha import twoCaptcha
 from selenium import webdriver
 from time import sleep
 import os
@@ -21,6 +21,7 @@ class ReCaptcha:
 
         # Navegador
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.twocaptcha = twoCaptcha()
 
     def abrir_navegador(self):
         # Entrar no site
@@ -32,31 +33,9 @@ class ReCaptcha:
         self.driver.close()
 
     def resolver_captcha(self, site_key):
-        # Fazer o request para receber o token
-        api_key = str(self.api_captcha)
-        url = str(self.url)
-
-        solver = TwoCaptcha(api_key) 
-        print("solving...")
-
-        while True:
-            try:
-                resultado = solver.recaptcha(
-                    sitekey=site_key,
-                    url=url
-                )
-
-                print("captcha resolvido")
-                break
-            except Exception as e:
-                print(e)
-                sleep(3)
-        
-        # Pegar Token
-        token = str(resultado["code"])
-
+        result = self.twocaptcha.solve_recaptcha(self.url, site_key)
         # Colocar o token no site
-        self.driver.execute_script("document.getElementById('g-recaptcha-response').innerHTML = " + "'" + token + "'")
+        self.driver.execute_script("document.getElementById('g-recaptcha-response').innerHTML = " + "'" + result + "'")
 
     def realizar_teste(self):
         # Pegar o link do captcha

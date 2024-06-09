@@ -1,7 +1,14 @@
-from automation.imgCaptcha import ImgCaptcha
-from automation.reCaptcha import ReCaptcha
+from automation.normalcaptcha import ImgCaptcha
+from dotenv import load_dotenv, find_dotenv
+from automation.recaptcha import ReCaptcha
+import os
 
-
+# Criar pasta de arquivos
+load_dotenv(find_dotenv())
+try:
+    os.mkdir(os.path.join(os.getcwd(), os.getenv("IMG_PATH")))
+except FileExistsError:
+    pass
 # Selecionar opções
 print("\n• Opções:\n1 - ImageCaptcha\n2 - ReCaptcha")
 while True:

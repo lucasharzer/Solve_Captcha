@@ -1,2 +1,8 @@
+# Pasta para armazenar arquivos gifs de resultados
 gifs
+# Arquivo de variáveis de ambiente
 .env
+# Arquivos de módulos do python
+__pycache__
+# Pasta de imagens do captcha
+file
