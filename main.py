@@ -3,6 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 from automation.recaptcha import ReCaptcha
 import os
 
+
 # Criar pasta de arquivos
 load_dotenv(find_dotenv())
 try:
@@ -24,7 +25,7 @@ while True:
         break
     except ValueError:
         print("opção inválida.")
-        
+
 # Navegação
 if opcao == 1:
     navegacao = ImgCaptcha()

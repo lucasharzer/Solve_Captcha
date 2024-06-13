@@ -77,6 +77,7 @@ class azCaptcha:
                             break
                 except Exception as e:
                     print(f"Erro ao tentar obter o captcha_id: {e}")
+                    
                     sleep(3)
             
             if status_captcha == 1:
@@ -106,6 +107,7 @@ class azCaptcha:
                             print(f"\r{response.text}", end="", flush=True)
                     except Exception as e:
                         print(f"\rErro ao tentar obter o token: {e}", end="", flush=True)
+
                         sleep(3)
                 
                 if repetir != 1:

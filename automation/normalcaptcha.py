@@ -45,6 +45,8 @@ class ImgCaptcha:
     def fechar_navegador(self):
         # Sair do site
         self.driver.close()
+        self.driver.quit()
+        del self.driver
 
     def resolver_captcha(self):
         # - Captcha usado (2Captcha)

@@ -37,6 +37,8 @@ class ReCaptcha:
     def fechar_navegador(self):
         # Sair do site
         self.driver.close()
+        self.driver.quit()
+        del self.driver
 
     def resolver_captcha(self, site_key):
         # - Captcha usado (2Captcha)

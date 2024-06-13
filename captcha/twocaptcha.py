@@ -58,7 +58,7 @@ class twoCaptcha:
                 elif str(e) == "ERROR_KEY_DOES_NOT_EXIST":
                     print("Erro na chave do captcha")
                     break
-
+                
                 sleep(3)
         
         if status_captcha == 1:
