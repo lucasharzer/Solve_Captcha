@@ -2,7 +2,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver.common.by import By
+# - Captcha usado (2Captcha)
 from captcha.twocaptcha import twoCaptcha
+# - Captcha alternativo (AzCaptcha)
+# from captcha.azcaptcha import azCaptcha
 from selenium import webdriver
 from time import sleep
 import urllib.request
@@ -29,7 +32,10 @@ class ImgCaptcha:
 
         # Navegador
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        # - Captcha usado (2Captcha)
         self.twocaptcha = twoCaptcha()
+        # - Captcha alternativo (AzCaptcha)
+        # self.azcaptcha = azCaptcha()
 
     def abrir_navegador(self):
         # Entrar no site
@@ -41,7 +47,10 @@ class ImgCaptcha:
         self.driver.close()
 
     def resolver_captcha(self):
+        # - Captcha usado (2Captcha)
         result = self.twocaptcha.solve_normal()
+        # - Captcha alternativo (AzCaptcha)
+        # result = self.azcaptcha.solve_normal()
         return result
 
     def realizar_teste(self):

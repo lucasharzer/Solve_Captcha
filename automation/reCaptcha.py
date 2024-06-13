@@ -2,7 +2,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver.common.by import By
+# - Captcha usado (2Captcha)
 from captcha.twocaptcha import twoCaptcha
+# - Captcha alternativo (AzCaptcha)
+# from captcha.azcaptcha import azCaptcha
 from selenium import webdriver
 from time import sleep
 import os
@@ -21,7 +24,10 @@ class ReCaptcha:
 
         # Navegador
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        # - Captcha usado (2Captcha)
         self.twocaptcha = twoCaptcha()
+        # - Captcha alternativo (AzCaptcha)
+        # self.azcaptcha = azCaptcha()
 
     def abrir_navegador(self):
         # Entrar no site
@@ -33,7 +39,10 @@ class ReCaptcha:
         self.driver.close()
 
     def resolver_captcha(self, site_key):
+        # - Captcha usado (2Captcha)
         result = self.twocaptcha.solve_recaptcha(self.url, site_key)
+        # - Captcha usado (2Captcha)
+        # result = self.azcaptcha.solve_recaptcha(self.url, site_key)
         # Colocar o token no site
         self.driver.execute_script("document.getElementById('g-recaptcha-response').innerHTML = " + "'" + result + "'")
 

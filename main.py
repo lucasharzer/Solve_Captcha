@@ -18,9 +18,13 @@ while True:
             print("opção indisponível.")
         else:
             break
+    except KeyboardInterrupt:
+        opcao = 0
+        print("programa encerrado")
+        break
     except ValueError:
         print("opção inválida.")
-
+        
 # Navegação
 if opcao == 1:
     navegacao = ImgCaptcha()
