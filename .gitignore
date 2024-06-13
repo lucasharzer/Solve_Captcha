@@ -6,3 +6,5 @@ gifs
 __pycache__
 # Pasta de imagens do captcha
 file
+# Sites de exemplo para o captcha
+sites-captcha.txt
