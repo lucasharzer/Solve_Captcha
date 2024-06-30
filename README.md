@@ -9,6 +9,11 @@ Solucionar desafios captcha com python usando 2captcha e azcaptcha (necessário 
 git clone url
 ```
 
+- Renomear arquivo de variáveis de ambiente
+```bash
+ren .env.example .env
+```
+
 - Instalar as dependências
 ```bash
 pip install -r requirements.txt
