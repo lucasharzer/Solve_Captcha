@@ -1,7 +1,9 @@
 # Resolver Captcha na programação
 
+# Definição
 Solucionar desafios captcha com python usando 2captcha e azcaptcha (necessário criar conta para utilizar a chave do serviço em ambos os sites). Os dois tipos de captchas utilizados aqui são o recaptcha e captcha de imagem.
 
+# Comandos
 - Clonar o repositório
 ```bash
 git clone url
@@ -17,6 +19,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
+# Demonstrações
 - ReCaptcha
 
 <span>
