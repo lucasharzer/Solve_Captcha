@@ -6,10 +6,10 @@ Solucionar desafios captcha com python usando 2captcha e azcaptcha (necessário 
 # Comandos
 - Clonar o repositório
 ```bash
-git clone url
+git clone <url do repositório>
 ```
 
-- Renomear arquivo de variáveis de ambiente
+- Renomear arquivo de variáveis de ambiente (após renomear preencher as informações corretamente)
 ```bash
 ren .env.example .env
 ```
